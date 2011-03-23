@@ -15,7 +15,7 @@ if sys.argv[-1] == "publish":
     publish()
     sys.exit()
 
-required = ['clint>=0.2.0', 'github2']
+required = ['clint>=0.2.0', 'github2', 'requests']
 
 setup(
     name='humble',
