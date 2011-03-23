@@ -12,8 +12,7 @@ import sys
 
 from . import core
 from clint import args
-from clint.textui import puts, colored, indent
-from clint.textui.columns import columns
+from clint.textui import puts, colored, columns
 
 
 PROJECT_BYLINE = 'by Kenneth Reitz <me@kennethreitz.com>'
@@ -22,10 +21,11 @@ PROJECT_URL = 'https://github.com/kennethreitz/humble'
 
 def show_version():
     puts('{0} v{1}.'.format(colored.yellow(core.__title__), core.__version__))
-    
+
+
 def show_usage():
-    
     puts('Usage: '+ colored.cyan('humble <username>'))
+
 
 def show_about():
     puts('{0} {1}'.format(colored.yellow(core.__title__), PROJECT_BYLINE))
@@ -33,7 +33,6 @@ def show_about():
 
 
 def start():
-    
     if args.flags.contains(('--version', '--ver', '-v')):
         show_version()
         sys.exit(2)
