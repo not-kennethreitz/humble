@@ -43,10 +43,13 @@ def get_repos_for(username):
     r = requests.get('{0}{1}'.format(GITHUB_API, username))
     repos = json.loads(r.content).get('user', {}).get('repositories', None)
     
-    def _sort(repo):
-        return repo.get('watchers', '0')
+    if repos:
+        def _sort(repo):
+            return repo.get('watchers', '0')
     
-    return sorted(repos, key=_sort, reverse=True)
+        return sorted(repos, key=_sort, reverse=True)
+    else:
+        return []
     
     
 # print get_repos_for('kennethreitz')
