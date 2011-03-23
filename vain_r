@@ -1,0 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import vain
+
+if __name__ == '__main__':
+    vain.cli.start()
