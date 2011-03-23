@@ -54,8 +54,8 @@ def start():
     if user:
         user_info = ' - '.join((
             str(colored.cyan(username)),
-            '{} followers'.format(str(user.followers_count)),
-            '{} public repositories'.format(str(user.public_repo_count))
+            '{0} followers'.format(str(user.followers_count)),
+            '{0} public repositories'.format(str(user.public_repo_count))
         ))
         puts(user_info)
         
