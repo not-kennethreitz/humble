@@ -12,27 +12,41 @@ import sys
 
 from . import core
 from clint import args
-from clint.textui import puts, colored
+from clint.textui import puts, colored, indent
 from clint.textui.columns import columns
 
 
-def version():
-    puts('{0} version {1}.'.format(colored.yellow(core.__title__), core.__version__))
-    sys.exit(0)
+PROJECT_BYLINE = 'by Kenneth Reitz <me@kennethreitz.com>'
+PROJECT_URL = 'https://github.com/kennethreitz/humble'
+
+
+def show_version():
+    puts('{0} v{1}.'.format(colored.yellow(core.__title__), core.__version__))
     
-def about():
-    puts('by Kenneth Reitz <me@kennethreitz.com>')
-    puts('http://github.com/kennethreitz/humble')
+def show_usage():
+    
+    puts('Usage: '+ colored.cyan('humble <username>'))
+
+def show_about():
+    puts('{0} {1}'.format(colored.yellow(core.__title__), PROJECT_BYLINE))
+    puts(PROJECT_URL)
 
 
 def start():
     
     if args.flags.contains(('--version', '--ver', '-v')):
-        version()
+        show_version()
+        sys.exit(2)
+
+    elif args.flags.contains(('-h', '--help')):
+        show_usage()
+        sys.exit(2)
     
     username = args.get(0)
     if not username:
-        puts('Please provide a username.')
+        show_about()
+        puts('')
+        show_usage()
         sys.exit(1)
     
     
