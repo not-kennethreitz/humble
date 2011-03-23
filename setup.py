@@ -19,7 +19,7 @@ required = ['clint>=0.2.0', 'github2']
 
 setup(
     name='humble',
-    version='0.1.0',
+    version='0.1.1',
     description='Shows stats on a given GitHub user.',
     long_description=open('README.rst').read(),
     author='Kenneth Reitz',
