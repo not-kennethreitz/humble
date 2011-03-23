@@ -18,14 +18,14 @@ if sys.argv[-1] == "publish":
 required = ['clint', 'github2']
 
 setup(
-    name='vain',
+    name='humble',
     version='0.1.0',
     description='Get a quick GitHub profiles repo list of',
     long_description=open('README.rst').read(),
     author='Kenneth Reitz',
     author_email='me@kennethreitz.com',
     url='https://github.com/kennethreitz/vain',
-    packages= ['vain'],
+    packages= ['humble'],
     install_requires=required,
     license='ISC',
     classifiers=(

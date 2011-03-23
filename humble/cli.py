@@ -13,4 +13,6 @@ from clint import args
 
 
 def start():
-    print args
+    username = args.get(0)
+    
+    user = core.get_info_for(username)
