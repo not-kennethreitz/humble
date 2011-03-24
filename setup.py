@@ -15,11 +15,11 @@ if sys.argv[-1] == "publish":
     publish()
     sys.exit()
 
-required = ['clint>=0.2.0', 'github2', 'requests']
+required = ['clint>=0.2.1', 'github2', 'requests']
 
 setup(
     name='humble',
-    version='0.1.1',
+    version='0.1.2',
     description='Shows stats on a given GitHub user.',
     long_description=open('README.rst').read(),
     author='Kenneth Reitz',
