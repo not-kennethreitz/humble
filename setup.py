@@ -17,6 +17,9 @@ if sys.argv[-1] == "publish":
 
 required = ['clint>=0.2.1', 'github2', 'requests']
 
+if sys.version_info[0:1] < (2, 6):
+    required.append('simplejson')
+
 setup(
     name='humble',
     version='0.1.2',
