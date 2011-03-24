@@ -8,8 +8,11 @@ This module contains the main API interface for Humble.
 
 """
 
+try:
+    import json
+except ImportError:
+    import simplejson as json
 
-import json
 
 from github2.client import Github
 import requests
