@@ -48,62 +48,77 @@ def start():
         show_usage()
         sys.exit(1)
     
-    
-    user = core.get_info_for(username)
-    
-    if user:
-        user_info = ' - '.join((
-            str(colored.cyan(username)),
-            '{0} followers'.format(str(user.followers_count)),
-            '{0} public repositories'.format(str(user.public_repo_count))
-        ))
-        puts(user_info)
+    if ('/') in username:
+        # display project info
+        puts('project info')
         
-        for repo in core.get_repos_for(username):
-            
-            # NAME
-            
-            c = [[colored.yellow(repo[u'name']), 38],]
-            
-            
-            # WATCHERS
-            
-            watchers = repo[u'watchers']
-            
-            watchers_s = ''
-            if watchers > 1:
-                watchers_s += 's' 
-            
-            c.append(['{0} watcher{1}'.format(watchers, watchers_s), 14])
-            
-            
-            # FORKS
-            
-            forks = repo[u'forks']
-            
-            forks_s = ''
-            if forks > 1:
-                forks_s += 's' 
-            
-            c.append(['{0} fork{1}'.format(forks, forks_s), 10])
-            
-
-            # FORK
-
-            if repo.get('fork', False):
-                fork = colored.red('(FORK)')
-            else:
-                fork = ''
-                
-            c.append([fork, 10])
-            
-            # print the column
-            puts(columns(*c))
-
-
+        user = core.get_info_for(username.split('/')[0])
+    
+        if user:
+            user_info = ' - '.join((
+                str(colored.cyan(username)),
+                '{0} followers'.format(str(user.followers_count)),
+                '{0} public repositories'.format(str(user.public_repo_count))
+            ))
+            puts(user_info)
+        
     else:
-        puts('Please provide a valid username')
-        sys.exit(1)
+        
+        user = core.get_info_for(username)
+    
+        if user:
+            user_info = ' - '.join((
+                str(colored.cyan(username)),
+                '{0} followers'.format(str(user.followers_count)),
+                '{0} public repositories'.format(str(user.public_repo_count))
+            ))
+            puts(user_info)
+        
+            for repo in core.get_repos_for(username):
+            
+                # NAME
+            
+                c = [[colored.yellow(repo[u'name']), 38],]
+            
+            
+                # WATCHERS
+            
+                watchers = repo[u'watchers']
+            
+                watchers_s = ''
+                if watchers > 1:
+                    watchers_s += 's' 
+            
+                c.append(['{0} watcher{1}'.format(watchers, watchers_s), 14])
+            
+            
+                # FORKS
+            
+                forks = repo[u'forks']
+            
+                forks_s = ''
+                if forks > 1:
+                    forks_s += 's' 
+            
+                c.append(['{0} fork{1}'.format(forks, forks_s), 10])
+            
+
+                # FORK
+
+                if repo.get('fork', False):
+                    fork = colored.red('(FORK)')
+                else:
+                    fork = ''
+                
+                c.append([fork, 10])
+            
+                # print the column
+                puts(columns(*c))
+
+
+        else:
+            puts('Please provide a valid username')
+            sys.exit(1)
     
     
     
