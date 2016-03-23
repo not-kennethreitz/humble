@@ -14,11 +14,11 @@ except ImportError:
     import simplejson as json
 
 
-from github2.client import Github
+from github import GitHub, ApiNotFoundError
 import requests
 
 
-github = Github()
+github = GitHub()
 
 
 __title__ = 'humble'
@@ -30,14 +30,14 @@ __copyright__ = 'Copyright 2011 Kenneth Reitz'
 __docformat__ = 'restructuredtext'
 
 
-GITHUB_API = 'http://github.com/api/v1/json/'
+GITHUB_API = 'https://api.github.com/'
 
 
 
 def get_info_for(username):
     try:
-        return github.users.show(username)
-    except RuntimeError:
+        return github.users(username).get()
+    except (RuntimeError, ApiNotFoundError) as error:
         return None
 
 

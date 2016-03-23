@@ -15,7 +15,7 @@ if sys.argv[-1] == "publish":
     publish()
     sys.exit()
 
-required = ['clint>=0.2.1', 'github2', 'requests']
+required = ['clint>=0.2.1', 'githubpy', 'requests']
 
 if sys.version_info[0:2] < (2, 6):
     required.append('simplejson')

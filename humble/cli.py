@@ -11,7 +11,7 @@ This module contains the CLI interface for Humble.
 import sys
 
 from . import core
-from clint import args
+from clint import Args
 from clint.textui import puts, colored, columns
 
 
@@ -33,6 +33,7 @@ def show_about():
 
 
 def start():
+    args = Args()
     if args.flags.contains(('--version', '--ver', '-v')):
         show_version()
         sys.exit(2)
@@ -57,8 +58,8 @@ def start():
         if user:
             user_info = ' - '.join((
                 str(colored.cyan(username)),
-                '{0} followers'.format(str(user.followers_count)),
-                '{0} public repositories'.format(str(user.public_repo_count))
+                '{0} followers'.format(str(user.followers)),
+                '{0} public repositories'.format(str(user.public_repos))
             ))
             puts(user_info)
         
@@ -69,8 +70,8 @@ def start():
         if user:
             user_info = ' - '.join((
                 str(colored.cyan(username)),
-                '{0} followers'.format(str(user.followers_count)),
-                '{0} public repositories'.format(str(user.public_repo_count))
+                '{0} followers'.format(str(user.followers)),
+                '{0} public repositories'.format(str(user.public_repos))
             ))
             puts(user_info)
         
